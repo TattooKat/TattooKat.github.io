@@ -1,0 +1,125 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Очистка кэша - Pro Tattoo</title>
+  <style>
+    body {
+      font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif;
+      background-color: #111111;
+      color: #ffffff;
+      line-height: 1.6;
+      padding: 20px;
+      margin: 0;
+      min-height: 100vh;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
+      text-align: center;
+    }
+    .container {
+      max-width: 600px;
+      margin: 0 auto;
+      padding: 40px 20px;
+      background-color: rgba(25, 25, 25, 0.8);
+      border-radius: 8px;
+      box-shadow: 0 4px 20px rgba(0, 0, 0, 0.3);
+    }
+    h1 {
+      margin-top: 0;
+      font-size: 28px;
+      font-weight: 700;
+    }
+    p {
+      margin: 20px 0;
+      font-size: 16px;
+    }
+    button {
+      background-color: #4a4a4a;
+      border: none;
+      color: white;
+      padding: 12px 24px;
+      text-align: center;
+      text-decoration: none;
+      display: inline-block;
+      font-size: 16px;
+      margin: 4px 2px;
+      transition-duration: 0.4s;
+      cursor: pointer;
+      border-radius: 4px;
+    }
+    button:hover {
+      background-color: #636363;
+    }
+    #status {
+      margin-top: 20px;
+      font-weight: bold;
+    }
+    a {
+      color: #aaaaaa;
+      text-decoration: none;
+      margin-top: 20px;
+      display: inline-block;
+    }
+    a:hover {
+      text-decoration: underline;
+    }
+  </style>
+</head>
+<body>
+  <div class="container">
+    <h1>Очистка кэша приложения</h1>
+    <p>Если у вас возникли проблемы с загрузкой сайта или вы видите устаревшую версию, воспользуйтесь этой страницей для обновления.</p>
+    <button id="clear-cache">Очистить кэш и обновить</button>
+    <p id="status"></p>
+    <a href="/">Вернуться на главную</a>
+  </div>
+
+  <script>
+    document.getElementById('clear-cache').addEventListener('click', async function() {
+      const statusElement = document.getElementById('status');
+      
+      try {
+        statusElement.textContent = 'Очистка кэша...';
+        
+        // Проверяем, установлен ли Service Worker
+        if ('serviceWorker' in navigator) {
+          // Получаем список всех регистраций
+          const registrations = await navigator.serviceWorker.getRegistrations();
+          
+          if (registrations.length > 0) {
+            // Отменяем все регистрации service worker
+            for(let registration of registrations) {
+              await registration.unregister();
+            }
+            statusElement.textContent = 'Кэш очищен успешно! Перенаправление...';
+          } else {
+            statusElement.textContent = 'Service Worker не найден';
+          }
+        } else {
+          statusElement.textContent = 'Service Worker не поддерживается в этом браузере';
+        }
+        
+        // Очищаем кэш приложения
+        if ('caches' in window) {
+          const cacheNames = await caches.keys();
+          await Promise.all(
+            cacheNames.map(cacheName => caches.delete(cacheName))
+          );
+        }
+        
+        // Перезагружаем страницу с очисткой кэша
+        setTimeout(() => {
+          window.location.href = '/?clearcache=' + new Date().getTime();
+        }, 1500);
+        
+      } catch (error) {
+        console.error('Ошибка при очистке кэша:', error);
+        statusElement.textContent = 'Ошибка при очистке кэша: ' + error.message;
+      }
+    });
+  </script>
+</body>
+</html>

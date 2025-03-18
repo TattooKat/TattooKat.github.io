@@ -1,0 +1,133 @@
+<!doctype html>
+<html lang="en,ru">
+  <head>
+    <style data-vite-theme="" data-inject-first="">:root {
+      --background: 191 100% 0%;
+--foreground: 183 100% 83%;
+--muted: 182 100% 16%;
+--muted-foreground: 183 100% 83%;
+--popover: 184 100% 5%;
+--popover-foreground: 183 100% 83%;
+--card: 184 100% 5%;
+--card-foreground: 183 100% 83%;
+--border: 182 100% 16%;
+--input: 182 100% 16%;
+--primary: 182 100% 29%;
+--primary-foreground: 182 55% 98%;
+--secondary: 182 100% 16%;
+--secondary-foreground: 183 100% 83%;
+--accent: 182 100% 16%;
+--accent-foreground: 183 100% 83%;
+--destructive: 0 62.8% 30.6%;
+--destructive-foreground: 0 0% 98%;
+--ring: 182 100% 29%;
+--radius: 1rem;
+  }
+  .light {
+      --background: 183 59% 62%;
+--foreground: 184 100% 5%;
+--muted: 182 100% 35%;
+--muted-foreground: 184 100% 5%;
+--popover: 183 100% 93%;
+--popover-foreground: 184 100% 5%;
+--card: 183 100% 93%;
+--card-foreground: 184 100% 5%;
+--border: 182 100% 35%;
+--input: 182 100% 35%;
+--primary: 182 100% 35%;
+--primary-foreground: 182 68% 98%;
+--secondary: 183 71% 68%;
+--secondary-foreground: 184 100% 5%;
+--accent: 183 71% 68%;
+--accent-foreground: 184 100% 5%;
+--destructive: 0 84.2% 60.2%;
+--destructive-foreground: 60 9.1% 97.8%;
+--ring: 182 100% 35%;
+--radius: 1rem;
+  }</style>
+
+    <meta charset="UTF-8" />
+    <meta
+      name="viewport"
+      content="width=device-width, initial-scale=1.0, maximum-scale=1"
+    />
+    <title>Pro-tattoo-11</title>
+
+    <meta name="apple-mobile-web-app-capable" content="yes" />
+    <meta
+      name="apple-mobile-web-app-status-bar-style"
+      content="black-translucent"
+    />
+    <meta name="apple-mobile-web-app-title" content="Pro-tattoo-11" />
+
+    <meta name="mobile-web-app-capable" content="yes" />
+    <meta name="theme-color" content="#000000" />
+
+    <link rel="manifest" href="/manifest.json" />
+
+    <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+    <link rel="icon" type="image/svg+xml" sizes="32x32" href="/favicon.svg" />
+    <link rel="apple-touch-icon" href="/favicon.svg" />
+
+    <meta
+      name="description"
+      content="Профессиональная студия татуировок в Сыктывкаре. Pro-tattoo-11.ru Качественно, стильно, безопасно!"
+    />
+    <meta
+      name="keywords"
+      content="татуировки, тату, студия тату, татуировщик, татуаж, tattoo, pro tattoo, татуировки Сыктывкар, тату Сыктывкар, студия тату Сыктывкар, татуировщик Сыктывкар, татуаж Сыктывкар, tattoo Сыктывкар, pro tattoo Сыктывкар, Тату Мастер Сыктывкар, Мастер Тату Сыктывкар,"
+    />
+
+    <!-- Start Single Page Apps for GitHub Pages -->
+    <script type="text/javascript">
+      // Single Page Apps for GitHub Pages
+      // MIT License
+      // https://github.com/rafgraph/spa-github-pages
+      (function(l) {
+        if (l.search[1] === '/' ) {
+          var decoded = l.search.slice(1).split('&').map(function(s) { 
+            return s.replace(/~and~/g, '&')
+          }).join('?');
+          window.history.replaceState(null, null,
+              l.pathname.slice(0, -1) + decoded + l.hash
+          );
+        }
+      }(window.location))
+    </script>
+    <!-- End Single Page Apps for GitHub Pages -->
+
+    <script>
+      if ("serviceWorker" in navigator) {
+        window.addEventListener("load", () => {
+          navigator.serviceWorker
+            .register("/service-worker.js")
+            .then((registration) => {
+              console.log(
+                "ServiceWorker зарегистрирован успешно:",
+                registration.scope,
+              );
+            })
+            .catch((error) => {
+              console.log("Ошибка регистрации ServiceWorker:", error);
+            });
+        });
+      }
+    </script>
+    <script type="module" crossorigin src="/assets/index-ZF6KSA0A.js"></script>
+    <link rel="stylesheet" crossorigin href="/assets/index-t3KWf5Jx.css">
+  </head>
+  <body>
+    <div id="root"></div>
+
+    <script>
+      if (window.location.search.includes("clearcache=")) {
+        setTimeout(() => {
+          alert(
+            "Кэш очищен успешно! Теперь вы используете обновленную версию приложения.",
+          );
+          window.history.replaceState(null, null, window.location.pathname);
+        }, 1000);
+      }
+    </script>
+  </body>
+</html>
